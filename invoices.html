@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Flow | Invoices - Shabnam</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">✨ Freelance Flow</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="invoices.html" class="active">Invoices</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2>Invoice Management</h2>
+        
+        <div class="form-card">
+            <h3>📄 Create Invoice</h3>
+            <form id="invoiceForm">
+                <select id="invoiceClientId" required>
+                    <option value="">Select Client *</option>
+                </select>
+                <input type="text" id="serviceTitle" placeholder="Service Title *" required>
+                <textarea id="description" placeholder="Description" rows="2"></textarea>
+                <input type="number" id="amount" placeholder="Amount ($) *" required step="0.01">
+                <input type="date" id="date" required>
+                <button type="submit" class="btn-primary">Create Invoice</button>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <table id="invoicesTable">
+                <thead>
+                    <tr><th>Client</th><th>Service</th><th>Amount</th><th>Date</th><th>Status</th><th>Actions</th></tr>
+                </thead>
+                <tbody id="invoicesList"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Freelance Flow - Built by Shabnam</p>
+    </footer>
+
+    <script type="module" src="js/invoices.js"></script>
+</body>
+</html>

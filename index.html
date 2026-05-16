@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Flow | Dashboard - Shabnam</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">✨ Freelance Flow</h1>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="clients.html">Clients</a></li>
+                <li><a href="invoices.html">Invoices</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="welcome-section">
+            <h2>Welcome back, Shabnam 👋</h2>
+            <div class="quote-card" id="quoteCard">
+                <p id="quoteText">Loading motivation...</p>
+                <p id="quoteAuthor">—</p>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Clients</h3>
+                <p class="stat-number" id="totalClients">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Invoices</h3>
+                <p class="stat-number" id="totalInvoices">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Revenue</h3>
+                <p class="stat-number" id="totalRevenue">$0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Paid Invoices</h3>
+                <p class="stat-number" id="paidCount">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Unpaid Invoices</h3>
+                <p class="stat-number" id="unpaidCount">0</p>
+            </div>
+        </section>
+
+        <button class="btn-secondary" id="exportBtn">📊 Export Summary (My cool feature)</button>
+    </main>
+
+    <footer>
+        <p>© 2026 Freelance Flow - Built by Shabnam</p>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

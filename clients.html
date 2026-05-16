@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Flow | Clients - Shabnam</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">✨ Freelance Flow</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="clients.html" class="active">Clients</a></li>
+                <li><a href="invoices.html">Invoices</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2>Client Management</h2>
+        
+        <!-- Add Client Form -->
+        <div class="form-card">
+            <h3>➕ Add New Client</h3>
+            <form id="clientForm">
+                <input type="text" id="clientName" placeholder="Full Name *" required>
+                <input type="email" id="clientEmail" placeholder="Email *" required>
+                <input type="text" id="clientCompany" placeholder="Company (optional)">
+                <textarea id="clientNotes" placeholder="Notes (optional)" rows="2"></textarea>
+                <button type="submit" class="btn-primary">Add Client</button>
+            </form>
+        </div>
+
+        <!-- Clients Table -->
+        <div class="table-container">
+            <table id="clientsTable">
+                <thead>
+                    <tr><th>Name</th><th>Email</th><th>Company</th><th>Notes</th><th>Actions</th></tr>
+                </thead>
+                <tbody id="clientsList"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Freelance Flow - Built by Shabnam</p>
+    </footer>
+
+    <script type="module" src="js/clients.js"></script>
+</body>
+</html>
