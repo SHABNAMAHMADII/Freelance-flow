@@ -1,13 +1,13 @@
-// Clients Module - CRUD operations + Random User API
+// Clients Module - CRUD operations with CUSTOM names
 // Shabnam's Freelance Flow - Week 5 Assignment
 
-import { loadData, saveClients, generateId } from './data.js';
+import { loadData, saveClients, saveData, generateId } from './data.js';
 import { validateClient } from './utils.js';
 
 let currentClients = [];
 
-// Custom clients for Shabnam's app
-function getCustomClients() {
+// CUSTOM CLIENTS - These are permanent!
+function getDefaultClients() {
     return [
         { id: generateId() + 1, name: "Hasiba", email: "hasiba@gmail.com", company: "Freelance Inc.", notes: "Preferred client", createdAt: new Date().toISOString() },
         { id: generateId() + 2, name: "Negina", email: "negina@gmail.com", company: "Freelance Inc.", notes: "Regular client", createdAt: new Date().toISOString() },
@@ -17,7 +17,6 @@ function getCustomClients() {
     ];
 }
 
-// Render clients table
 function renderClients() {
     const tbody = document.getElementById('clientsList');
     if (!tbody) return;
@@ -135,19 +134,18 @@ function init() {
     const data = loadData();
     currentClients = data.clients || [];
     
+    // If no clients exist, add the custom ones
     if (currentClients.length === 0) {
-        // Use custom names instead of random API
-        currentClients = getCustomClients();
+        currentClients = getDefaultClients();
         saveClients(currentClients);
-        renderClients();
-    } else {
-        renderClients();
     }
+    renderClients();
     
-    document.getElementById('clientForm')?.addEventListener('submit', addClient);
+    const form = document.getElementById('clientForm');
+    if (form) {
+        form.addEventListener('submit', addClient);
+    }
 }
 
-// Need to import saveData for delete function
-import { saveData } from './data.js';
-
+// Start the app
 init();
