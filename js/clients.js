@@ -1,39 +1,23 @@
 // Clients Module - CRUD operations + Random User API
-// Shabnam's implementation
+// Shabnam's Freelance Flow - Week 5 Assignment
 
 import { loadData, saveClients, generateId } from './data.js';
-import { validateClient, formatCurrency } from './utils.js';
+import { validateClient } from './utils.js';
 
 let currentClients = [];
 
-// Fetch initial clients from Random User API
-async function fetchRandomUsers() {
-    try {
-        console.log('Fetching 5 random users for Shabnam...');
-        const response = await fetch('https://randomuser.me/api/?results=5&nat=us');
-        
-        if (!response.ok) throw new Error(`API error: ${response.status}`);
-        
-        const data = await response.json();
-        
-        const newClients = data.results.map((user, index) => ({
-            id: generateId() + index,
-            name: `${user.name.first} ${user.name.last}`,
-            email: user.email,
-            company: 'Freelance Inc.', // As specified in assignment
-            notes: `Imported from API - ${user.location.city}, ${user.location.state}`,
-            createdAt: new Date().toISOString()
-        }));
-        
-        return newClients;
-    } catch (error) {
-        console.error('Failed to fetch random users:', error);
-        alert('Could not load sample clients. You can add them manually.');
-        return [];
-    }
+// Custom clients for Shabnam's app
+function getCustomClients() {
+    return [
+        { id: generateId() + 1, name: "Hasiba", email: "hasiba@gmail.com", company: "Freelance Inc.", notes: "Preferred client", createdAt: new Date().toISOString() },
+        { id: generateId() + 2, name: "Negina", email: "negina@gmail.com", company: "Freelance Inc.", notes: "Regular client", createdAt: new Date().toISOString() },
+        { id: generateId() + 3, name: "Madina", email: "madina@gmail.com", company: "Freelance Inc.", notes: "VIP client", createdAt: new Date().toISOString() },
+        { id: generateId() + 4, name: "Shabana", email: "shabana@gmail.com", company: "Freelance Inc.", notes: "New client", createdAt: new Date().toISOString() },
+        { id: generateId() + 5, name: "Hosai", email: "hosai@gmail.com", company: "Freelance Inc.", notes: "Long-term client", createdAt: new Date().toISOString() }
+    ];
 }
 
-// Render clients table - using forEach like assignment requires
+// Render clients table
 function renderClients() {
     const tbody = document.getElementById('clientsList');
     if (!tbody) return;
@@ -59,7 +43,6 @@ function renderClients() {
         `;
     });
     
-    // Add event listeners to buttons - this took me a while to figure out
     document.querySelectorAll('.btn-edit').forEach(btn => {
         btn.addEventListener('click', () => editClient(parseInt(btn.dataset.id)));
     });
@@ -69,7 +52,6 @@ function renderClients() {
     });
 }
 
-// Simple escape to prevent XSS
 function escapeHtml(str) {
     if (!str) return '';
     return str.replace(/[&<>]/g, function(m) {
@@ -80,7 +62,6 @@ function escapeHtml(str) {
     });
 }
 
-// Add new client
 function addClient(event) {
     event.preventDefault();
     
@@ -108,12 +89,10 @@ function addClient(event) {
     saveClients(currentClients);
     renderClients();
     
-    // Clear form
     document.getElementById('clientForm').reset();
     alert('Client added successfully!');
 }
 
-// Edit client - I like how this works
 function editClient(id) {
     const client = currentClients.find(c => c.id === id);
     if (!client) return;
@@ -140,10 +119,8 @@ function editClient(id) {
     alert('Client updated!');
 }
 
-// Delete client
 function deleteClient(id) {
     if (confirm('Are you sure? This will also delete their invoices!')) {
-        // Also need to delete associated invoices - found this bug and fixed it
         const data = loadData();
         data.invoices = data.invoices.filter(inv => inv.clientId !== id);
         data.clients = currentClients.filter(c => c.id !== id);
@@ -154,20 +131,15 @@ function deleteClient(id) {
     }
 }
 
-// Load initial data
 function init() {
     const data = loadData();
     currentClients = data.clients || [];
     
     if (currentClients.length === 0) {
-        // Fetch from API as specified
-        fetchRandomUsers().then(apiClients => {
-            if (apiClients.length > 0) {
-                currentClients = apiClients;
-                saveClients(currentClients);
-            }
-            renderClients();
-        });
+        // Use custom names instead of random API
+        currentClients = getCustomClients();
+        saveClients(currentClients);
+        renderClients();
     } else {
         renderClients();
     }
@@ -175,5 +147,7 @@ function init() {
     document.getElementById('clientForm')?.addEventListener('submit', addClient);
 }
 
-// Start the app
+// Need to import saveData for delete function
+import { saveData } from './data.js';
+
 init();
