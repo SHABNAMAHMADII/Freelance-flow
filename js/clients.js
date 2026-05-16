@@ -1,21 +1,19 @@
-// Clients Module - CRUD operations with CUSTOM names
-// Shabnam's Freelance Flow - Week 5 Assignment
+// Clients Module - PERMANENT CUSTOM NAMES (No Random API)
+// Shabnam's Freelance Flow
 
 import { loadData, saveClients, saveData, generateId } from './data.js';
 import { validateClient } from './utils.js';
 
 let currentClients = [];
 
-// CUSTOM CLIENTS - These are permanent!
-function getDefaultClients() {
-    return [
-        { id: generateId() + 1, name: "Hasiba", email: "hasiba@gmail.com", company: "Freelance Inc.", notes: "Preferred client", createdAt: new Date().toISOString() },
-        { id: generateId() + 2, name: "Negina", email: "negina@gmail.com", company: "Freelance Inc.", notes: "Regular client", createdAt: new Date().toISOString() },
-        { id: generateId() + 3, name: "Madina", email: "madina@gmail.com", company: "Freelance Inc.", notes: "VIP client", createdAt: new Date().toISOString() },
-        { id: generateId() + 4, name: "Shabana", email: "shabana@gmail.com", company: "Freelance Inc.", notes: "New client", createdAt: new Date().toISOString() },
-        { id: generateId() + 5, name: "Hosai", email: "hosai@gmail.com", company: "Freelance Inc.", notes: "Long-term client", createdAt: new Date().toISOString() }
-    ];
-}
+// YOUR PERMANENT CLIENTS - These will ALWAYS show up first
+const PERMANENT_CLIENTS = [
+    { id: 1001, name: "Hasiba", email: "hasiba@gmail.com", company: "Freelance Inc.", notes: "Preferred client", createdAt: new Date().toISOString() },
+    { id: 1002, name: "Negina", email: "negina@gmail.com", company: "Freelance Inc.", notes: "Regular client", createdAt: new Date().toISOString() },
+    { id: 1003, name: "Madina", email: "madina@gmail.com", company: "Freelance Inc.", notes: "VIP client", createdAt: new Date().toISOString() },
+    { id: 1004, name: "Shabana", email: "shabana@gmail.com", company: "Freelance Inc.", notes: "New client", createdAt: new Date().toISOString() },
+    { id: 1005, name: "Hosai", email: "hosai@gmail.com", company: "Freelance Inc.", notes: "Long-term client", createdAt: new Date().toISOString() }
+];
 
 function renderClients() {
     const tbody = document.getElementById('clientsList');
@@ -134,9 +132,9 @@ function init() {
     const data = loadData();
     currentClients = data.clients || [];
     
-    // If no clients exist, add the custom ones
+    // ALWAYS use permanent clients if empty
     if (currentClients.length === 0) {
-        currentClients = getDefaultClients();
+        currentClients = [...PERMANENT_CLIENTS];
         saveClients(currentClients);
     }
     renderClients();
@@ -147,5 +145,4 @@ function init() {
     }
 }
 
-// Start the app
 init();
