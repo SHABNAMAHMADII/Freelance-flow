@@ -3,10 +3,10 @@
 **Built by Shabnam** | Week 5 Assignment
 
 ## Live Demo
-[Add your GitHub Pages link here after deployment]
+https://shabnamahmadii.github.io/Freelance-flow/
 
 ## GitHub Repository
-[Add your GitHub repo link here]
+https://github.com/SHABNAMAHMADII/Freelance-flow
 
 ---
 
@@ -46,15 +46,13 @@ No build steps or dependencies required!
 ## Reflection
 
 **Skills gained:**
-This project taught me how to structure a multi-page JavaScript app using ES6 modules. I finally understand `map()`, `filter()`, and `reduce()` after practicing with invoice calculations. Working with localStorage and APIs together was challenging but rewarding.
+I learned how to use localStorage to save data, fetch APIs with async/await, and use array methods like forEach, map, filter, and reduce for data calculations.
 
 **Biggest challenge:**
-Getting the Random User API to populate clients on first load AND keep them in localStorage so they don't disappear on refresh. I also struggled with the invoice-client relationship (deleting a client should delete their invoices).
+Getting GitHub Pages to work with the correct folder structure (css/ and js/ folders) and making the delete button work on invoices.
 
 **Favorite feature:**
-The Export Summary button I added on the dashboard. It's simple but shows I can extend the requirements. Also love how the motivational quote changes every time you refresh!
-
----
+The dashboard that automatically calculates total revenue from all invoices using reduce().
 
 ## Assignment Requirements Checklist
 
